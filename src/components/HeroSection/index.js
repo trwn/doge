@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
+import { injected } from "../Wallet/connectors";
 import contract from "../../contracts/psychpunks.json";
 import logo from "../../images/logo.png";
 import grid from "../../images/grid.png";
@@ -34,10 +36,8 @@ import {
 const contractAddress = "0xab89D55822768F9eA1A6FFbe3f0eE10D676cA752";
 const abi = contract.abi;
 
-
-
-
 const HeroSection = () => {
+  const { active, activate, account } = useWeb3React();
   const [hover, setHover] = useState(false);
   const [currentAccount, setCurrentAccount] = useState(null);
   const [amount, setAmount] = useState("");
@@ -45,6 +45,14 @@ const HeroSection = () => {
 
   const onHover = () => {
     setHover(!hover);
+  };
+
+  const connect = async () => {
+    try {
+      await activate(injected);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const checkIfWalletIsConnected = async () => {
@@ -100,88 +108,66 @@ const HeroSection = () => {
   let [count, setCount] = useState(0);
 
   function incrementCount() {
-    if (count > 14){
+    if (count > 14) {
       count = 15;
       setCount(count);
-    }
-    else if (count < 0) {
+    } else if (count < 0) {
       count = 0;
       setCount(count);
-    }
-    else {
-      count +=1;
+    } else {
+      count += 1;
       setCount(count);
     }
-    
-    };
+  }
   function decrementCount() {
-      if (count > 15){
-        count = 15;
-        setCount(count);
-      }
-      else if (count < 1) {
-        count = 0;
-        setCount(count);
-      }
-      else {
-        count -=1;
-        setCount(count);
-      };
-    };
+    if (count > 15) {
+      count = 15;
+      setCount(count);
+    } else if (count < 1) {
+      count = 0;
+      setCount(count);
+    } else {
+      count -= 1;
+      setCount(count);
+    }
+  }
   return (
     <HeroContainer>
       <HeroBg>
-      <HeroLogo src={logo}/>
-        <ImageBg/>
+        <HeroLogo src={logo} />
+        <ImageBg />
       </HeroBg>
       <HeroContent>
-      <Grid src={grid}></Grid>
-      <MintDiv>
-      <MiniAbout>
-        DogeVerse is a collection of 8888 //something cool// about this long or so i guess
-        </MiniAbout>
-        <First>
-        First 800 FREE (max. 1 NFT / tx.)
-        </First>
-        <Then>
-        Then 0.069Ξ each (max 15 NFT / tx.)
-        </Then>
-      <Minted>
-        <MintCText>
-      Minted     
-      </MintCText>
-      <MintCText2>
-      Count
-      </MintCText2>
-      </Minted>
-      <Price>
-        <PriceText>
-        Price
-        </PriceText>
-        <PriceText2>
-        0.069Ξ
-        </PriceText2>
-      </Price>
-      
-      <NewDiv>
-      <MintInput>
-          <Minus onClick={decrementCount}>-</Minus>
-          <Input >{count}</Input>
-          <Plus onClick={incrementCount}>+</Plus>
-      </MintInput>
-      <Spacer></Spacer>
-      <ConnectButton>
-        Connect Wallet
-      </ConnectButton>
-      </NewDiv>
-      <MyNFT>
-        My total NFT minted (pull data from wallet)
-      </MyNFT>
-      </MintDiv>
+        <Grid src={grid}></Grid>
+        <MintDiv>
+          <MiniAbout>
+            DogeVerse is a collection of 8888 //something cool// about this long
+            or so i guess
+          </MiniAbout>
+          <First>First 800 FREE (max. 1 NFT / tx.)</First>
+          <Then>Then 0.069Ξ each (max 15 NFT / tx.)</Then>
+          <Minted>
+            <MintCText>Minted</MintCText>
+            <MintCText2>Count</MintCText2>
+          </Minted>
+          <Price>
+            <PriceText>Price</PriceText>
+            <PriceText2>0.069Ξ</PriceText2>
+          </Price>
+
+          <NewDiv>
+            <MintInput>
+              <Minus onClick={decrementCount}>-</Minus>
+              <Input>{count}</Input>
+              <Plus onClick={incrementCount}>+</Plus>
+            </MintInput>
+            <Spacer></Spacer>
+            <ConnectButton>Connect Wallet</ConnectButton>
+          </NewDiv>
+          <MyNFT>My total NFT minted (pull data from wallet)</MyNFT>
+        </MintDiv>
       </HeroContent>
     </HeroContainer>
   );
-  
 };
 export default HeroSection;
-

@@ -2,7 +2,7 @@ import React from "react";
 import { FaTwitter, FaDiscord } from "react-icons/fa";
 import openSea from "../../images/opensea.png";
 import { animateScroll as scroll } from "react-scroll";
-import logo from "../../images/logo.png";
+import logo from '../../images/logo.png'
 import {
   FooterContainer,
   FooterWrap,
@@ -13,6 +13,8 @@ import {
   SocialIcons,
   SocialIconsLink,
   IconImg,
+  FooterShade,
+  ImageBg,
 } from "./FooterElements";
 
 const Footer = () => {
@@ -33,13 +35,25 @@ const Footer = () => {
               Contract address: xxx
             </Info>
             <SocialIcons>
-              <SocialIconsLink href="" target="_blank" aria-label="Twitter">
+              <SocialIconsLink
+                href=""
+                target="_blank"
+                aria-label="Twitter"
+              >
                 <FaTwitter />
               </SocialIconsLink>
-              <SocialIconsLink href="" target="_blank" aria-label="Discord">
+              <SocialIconsLink
+                href=""
+                target="_blank"
+                aria-label="Discord"
+              >
                 <FaDiscord />
               </SocialIconsLink>
-              <SocialIconsLink href="" target="_blank" aria-label="OpenSea">
+              <SocialIconsLink
+                href=""
+                target="_blank"
+                aria-label="OpenSea"
+              >
                 <IconImg src={openSea}></IconImg>
               </SocialIconsLink>
             </SocialIcons>

@@ -9,20 +9,6 @@ export const HeroContainer = styled.div`
   z-index: 1;
   background: black;
   object-fit: cover;
-
-  :before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.2) 100%
-    );
-  }
 `;
 
 export const HeroBg = styled.div`
@@ -90,7 +76,7 @@ export const MiniAbout = styled.p`
   padding-top: 15px;
 `;
 
-export const Plus = styled.span`
+export const Plus = styled.button`
   width: 35px;
   height: 35px;
   background: #3b3b3b;
@@ -105,9 +91,10 @@ export const Plus = styled.span`
   font-size: 30px;
   vertical-align: middle;
   line-height: 30px;
+  cursor: pointer;
 `;
 
-export const Minus = styled.span`
+export const Minus = styled.button`
   width: 35px;
   height: 35px;
   background: #3b3b3b;
@@ -122,9 +109,10 @@ export const Minus = styled.span`
   font-size: 30px;
   vertical-align: middle;
   line-height: 30px;
+  cursor: pointer;
 `;
 
-export const Input = styled.div`
+export const Input = styled.input`
   height: 34px;
   width: 310px;
   text-align: center;
@@ -133,12 +121,13 @@ export const Input = styled.div`
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
-  color: black;
+  background-color: black;
+  color: white;
   text-align: center;
   position: relative;
 `;
 
-export const ConnectButton = styled.button`
+export const Button = styled.button`
   color: black;
   background: #282828;
   position: relative;
@@ -148,6 +137,7 @@ export const ConnectButton = styled.button`
   background: #de9e45;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
 `;
 
 export const MyNFT = styled.p`

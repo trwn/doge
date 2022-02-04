@@ -7,7 +7,6 @@ import {
   TextWrapper,
   Heading,
   Subtitle,
-  Spacer,
 } from "./AboutElements";
 
 const about = () => {
@@ -22,7 +21,8 @@ const about = () => {
                 <Subtitle>
                   make a paragraph or sum about the comic (maybe hold = free
                   digital comic and free physical to first 2000)
-                  <Spacer></Spacer>
+                  <br></br>
+                  <br></br>
                   also donate some amount to dog charity
                 </Subtitle>
               </TextWrapper>

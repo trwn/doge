@@ -69,7 +69,3 @@ export const Subtitle = styled.p`
     font-size: 24px;
   }
 `;
-
-export const Spacer = styled.div`
-  height: 25px;
-`;

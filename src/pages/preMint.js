@@ -2,7 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import contract from "../contracts/dogeVerse.json";
-import { Button, MintBox } from "./preMintElements";
+import Footer from "../components/Footer";
+import Preview from "../components/Preview";
+import {
+  PreBg,
+  PreContainer,
+  PreLogo,
+  Button,
+  MintBox,
+  MintDiv,
+  PreAbout,
+} from './preMintElements'
+import logo from "../images/logo.png";
 
 const contractAddress = "0x634a5A9cE5D9718a229fC66A024F0C16Fe5B99fb";
 const abi = contract.abi;
@@ -90,11 +101,20 @@ const PreMint = () => {
   }, []);
 
   return (
+    <>
+    <PreBg>
+      <PreLogo src={logo}></PreLogo>
+    </PreBg>
+    <MintDiv>
     <MintBox>
       <Button>
         {currentAccount ? mintNftButton() : connectWalletButton()}
       </Button>
     </MintBox>
+    </MintDiv>
+    <Preview/>
+    <Footer/>
+    </>
   );
 };
 
